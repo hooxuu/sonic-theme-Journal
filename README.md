@@ -4,7 +4,7 @@
 
 该主题的原作者为 [SumiMakito](https://github.com/SumiMakito)，非常感谢做出这么优秀的主题。
 
-使用Go Template语法进行改写以适配Sonic，初学Go，如遇问题请见谅。
+使用Go Template语法进行改写以适配[Sonic](https://github.com/go-sonic/sonic)，初学Go，如遇问题请见谅。
 
 **模板经过测试没有问题，但是Sonic后端分页模块返回的路径有些许小bug，需要微调后端进行适配，此问题不局限于本主题！**
 
