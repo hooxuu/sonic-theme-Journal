@@ -1,28 +1,19 @@
-<#include "layout/_include/head.ftl">
-<@head title="${sheet.title!} - ${blog_title!}"></@head>
-<#include "layout/_include/container_head.ftl">
-<#include "layout/_include/single_column_head.ftl">
-<#include "layout/_include/side_nav.ftl">
-<div ref="extraContainer" class="extra-container">
-    <div class="pagination">
-        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
-           :class="{ invisible: scrollY == 0 }">
-            <i class="material-icons pagination-action-icon">
-                keyboard_arrow_up
-            </i>
-        </a>
-    </div>
-</div>
+{{- define "SumiMakito_Journal/sheet" -}}
+{{template "SumiMakito_Journal/layout/_include/head.ftl" .}}
+{{template "SumiMakito_Journal/layout/_include/container_head" .}}
+{{template "SumiMakito_Journal/layout/_include/single_column_head" .}}
+{{template "SumiMakito_Journal/layout/_include/side_nav" .}}
+<div ref="extraContainer" class="extra-container"></div>
 <div ref="streamContainer" class="stream-container">
     <div class="post-list-container post-list-container-shadow">
         <div class="post">
-            <div class="<#if post.thumbnail?? && post.thumbnail!=''>post-head-wrapper<#else>post-head-wrapper-text-only</#if>"
-                 style="background-image: url('${sheet.thumbnail!}')">
+            <div {{if .post.Thumbnail}}class="post-head-wrapper"{{else}}class="post-head-wrapper-text-only"{{end}}>
+                 style="background-image: url('{{.sheet.Thumbnail}}')">
                 <div class="post-title">
-                    ${sheet.title!}
+                    {{.sheet.Title}}
                     <div class="post-meta">
-                        <time datetime="${sheet.createTime!}" itemprop="datePublished">
-                            ${sheet.createTime?string('yyyy-MM-dd HH:mm')}
+                        <time datetime="{{.sheet.CreateTime}}" itemprop="datePublished">
+                            {{unix_milli_time_format "2006-01-02 15:04:05" .sheet.CreateTime}}
                         </time>
                     </div>
                 </div>
@@ -30,19 +21,19 @@
 
             <div class="post-body-wrapper">
                 <div class="post-body">
-                    ${sheet.formatContent!}
+                    {{noescape .sheet.Content}}
                 </div>
             </div>
 
-            <#include "layout/_include/comment_templates.ftl">
-            <@comment_templates sheet,'sheet' />
+            {{template "SumiMakito_Journal/layout/_include/comment_templates" .}}
         </div>
     </div>
-    <#include "layout/_include/single_column_footer.ftl">
+    {{template "SumiMakito_Journal/single_column_footer" .}}
 </div>
 
-<#include "layout/_include/container_tail.ftl">
-<#if !sheet.disallowComment!false>
-    <#include "layout/_include/comment_includes.ftl">
-</#if>
-<#include "layout/_include/tail.ftl">
+{{template "SumiMakito_Journal/layout/_include/container_tail" .}}
+{{if .sheet.DisallowComment}}
+    {{template "SumiMakito_Journal/layout/_include/comment_includes" .}}
+{{end}}
+{{template "SumiMakito_Journal/layout/_include/tail" .}}
+{{end}}
