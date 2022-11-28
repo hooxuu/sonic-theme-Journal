@@ -1,0 +1,62 @@
+{{- define "SumiMakito_Journal/archives" -}}
+{{template "SumiMakito_Journal/layout/_include/head.ftl" .}}
+{{template "SumiMakito_Journal/layout/_include/container_head" .}}
+{{template "SumiMakito_Journal/layout/_include/single_column_head" .}}
+{{template "SumiMakito_Journal/layout/_include/side_nav" .}}
+<div ref="extraContainer" class="extra-container">
+    {{$pagination:=(archivesPagination .posts.PageNum .posts.Pages 3)}}
+    <div class="pagination index-page">
+        {{if $pagination.HasPrev}}
+            <a class="pagination-action" href="{{$pagination.PrevPageFullPath}}" style="opacity: 1;">
+                <i class="material-icons pagination-action-icon">
+                    chevron_left
+                </i>
+            </a>
+        {{end}}
+         <div class="pagination-indicator">
+            <span style="text-align: center">
+                {{add .posts.PageNum 1}}<br><div
+                        style="display: inline-block; transform: rotate(-28deg)">-</div><br>{{ .posts.Pages}}
+            </span>
+        </div>
+        {{if $pagination.HasNext}}
+            <a href="{{$pagination.NextPageFullPath}}" class="pagination-action" style="opacity: 1;">
+                <i class="material-icons pagination-action-icon">
+                    chevron_right
+                </i>
+            </a>
+        {{end}}
+    </div>
+</div>
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        {{range $archive:=.archives}}
+            {{range $post:=$archive.Posts}}
+                <a href="{{$post.FullPath}}" class="a-block">
+                    <div class="post-item-wrapper">
+                        <div class="post-item post-item-no-gaps">
+                            <div class="post-item-info-wrapper">
+                                <div class="post-item-title">
+                                    {{$post.Title}}
+                                </div>
+                                <div class="post-item-meta">
+                                    {{unix_milli_time_format "2006-01-02" $post.CreateTime}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {{end}}
+        {{end}}
+    </div>
+    {{if (gt .posts.Pages 1)}}
+        {{template "SumiMakito_Journal/layout/_include/archives_pagination" .}}
+    {{end}}
+
+    {{template "SumiMakito_Journal/single_column_footer" .}}
+</div>
+
+
+{{template "SumiMakito_Journal/layout/_include/container_tail" .}}
+{{template "SumiMakito_Journal/layout/_include/tail" .}}
+{{- end -}}

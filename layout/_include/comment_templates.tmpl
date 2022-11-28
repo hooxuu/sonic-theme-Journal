@@ -1,0 +1,11 @@
+{{- define "SumiMakito_Journal/layout/_include/comment_templates" -}}
+    {{if .target.DisallowComment}}
+    <p style="opacity: 0.6; padding: 30px 15px" align="center">
+        <small>这篇内容的评论功能已被禁用</small><br>
+    </p>
+    {{else}}
+    <div class="post-comment-wrapper">
+        <halo-comment id="{{.target.ID}}" type="{{.type}}"/>
+    </div>
+    {{end}}
+{{- end -}}

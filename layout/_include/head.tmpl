@@ -1,0 +1,42 @@
+{{- define "SumiMakito_Journal/layout/_include/head.ftl" -}}
+<!DOCTYPE html>
+<html lang="zh" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <title>{{.blog_title}}</title>
+    <meta charset="utf-8">
+    <meta name="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="{{ .user.Nickname}}">
+    <meta name="description" content="{{ .meta_description}}">
+    <meta name="keywords" content="{{ .meta_keywords}}">
+    <link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="{{ .atom_url}}">
+    <meta charset="utf-8">
+    <meta name="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="renderer" content="webkit">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="{{ .theme_base}}/dist/style.css">
+    <link rel="stylesheet"
+              href="https://fonts.loli.net/css?family=Lora|Montserrat|Fira+Mono|Material+Icons"/>
+    {{if .options.seo_spider_disabled }}
+        <meta name="robots" content="none">
+    {{else}}
+        <meta name="generator" content="Sonic {{.version}}"/>
+        {{.options.blog_custom_head}}
+        {{if .options.blog_favicon}}
+            <link rel="shortcut icon" type="images/x-icon" href="{{.options.blog_favicon}}">
+        {{end}}
+    {{end}}
+
+    <!-- Import prettify css  -->
+    {{if or .is_post .is_sheet}}
+        <link href="{{ .theme_base}}/assets/libs/highlight.js/styles/{{or .settings.highlight_style default.min.css}}"
+              rel="stylesheet">
+        <script src="{{ .theme_base}}/assets/libs/highlight.js/highlight.min.js"></script>
+    {{end}}
+
+    {{.options.blog_statistics_code}}
+</head>
+<body>
+    <div id="top"></div>
+{{- end -}}

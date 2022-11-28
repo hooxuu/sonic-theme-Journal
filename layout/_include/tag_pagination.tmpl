@@ -1,0 +1,21 @@
+
+{{- define "SumiMakito_Journal/layout/_include/tag_pagination" -}}
+{{$pagination:=(tagPostsPagination .posts.PageNum .posts.Pages 3 .tag.Slug)}}
+<div class="pagination index-page">
+    {{if $pagination.HasPrev}}
+        <a class="pagination-action" href="{{$pagination.PrevPageFullPath}}" style="opacity: 1;">
+            <i class="material-icons pagination-action-icon">
+                chevron_left
+            </i>
+        </a>
+    {{end}}
+    <div class="pagination-indicator"><span>{{add .posts.PageNum 1}}/{{ .posts.Pages}}</span></div>
+    {{if $pagination.HasNext}}
+        <a href="{{$pagination.NextPageFullPath}}" class="pagination-action" style="opacity: 1;">
+            <i class="material-icons pagination-action-icon">
+                chevron_right
+            </i>
+        </a>
+    {{end}}
+</div>
+{{end}}

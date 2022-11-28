@@ -1,0 +1,42 @@
+{{- define "SumiMakito_Journal/tags" -}}
+{{template "SumiMakito_Journal/layout/_include/head.ftl" .}}
+{{template "SumiMakito_Journal/layout/_include/container_head" .}}
+{{template "SumiMakito_Journal/layout/_include/single_column_head" .}}
+{{template "SumiMakito_Journal/layout/_include/side_nav" .}}
+{{/* extraContainer没啥用，没他页面报错，有页面引用他 */}}
+<div ref="extraContainer" class="extra-container"></div>
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <a class="a-block">
+            <div class="post-item-wrapper post-item-wrapper-no-hover">
+                <div class="post-item post-item-no-gaps">
+                    <div class="post-item-info-wrapper">
+                        <div class="post-item-title post-item-title-small">
+                            标签
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {{$tags:=getAllTag}}
+        {{range $tag:=$tags}}
+            <a href="{{$tag.FullPath}}" class="a-block">
+                <div class="post-item-wrapper">
+                    <div class="post-item post-item-no-gaps">
+                        <div class="post-item-info-wrapper">
+                            <div class="post-item-title">
+                                {{$tag.Name}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {{end}}
+    </div>
+
+    {{template "SumiMakito_Journal/single_column_footer" .}}
+</div>
+
+{{template "SumiMakito_Journal/layout/_include/container_tail" .}}
+{{template "SumiMakito_Journal/layout/_include/tail" .}}
+{{- end -}}

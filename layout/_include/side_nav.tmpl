@@ -1,0 +1,55 @@
+{{- define "SumiMakito_Journal/layout/_include/side_nav" -}}
+<div ref="sideContainer" class="side-container">
+    <a class="a-block nav-head {{if .is_index}}active{{end}}" href="{{ .blog_url}}">
+        <div class="nav-title">
+            {{if .settings.sidebar_title }}
+                {{.settings.sidebar_title}}
+            {{else}}
+                {{.blog_title}}
+            {{end}}
+        </div>
+        <div class="nav-subtitle">
+            {{if .settings.sidebar_subtitle }}
+                {{.settings.sidebar_subtitle}}
+            {{else}}
+                
+            {{end}}
+        </div>
+    </a>
+
+    <div class="nav-link-list">
+        {{ $menus:=(listMenu)}}
+        {{range $menu:=$menus}}
+            <a class="a-block nav-link-item" href="{{$menu.URL}}" target="{{$menu.Target}}">
+                {{$menu.Name}}
+            </a>
+        {{end}}
+
+        {{if .settings.sidebar_rss}}
+            <a class="a-block no-tint nav-link-item" href="{{ .atom_url}}">
+                RSS
+            </a>
+        {{end}}
+    </div>
+
+        {{/* 小风车 */}}
+        <div>
+          <span class="windmill2">
+          <span class="pillar"></span>
+          <span class="axis">
+          <span class="swing"></span>
+          <span class="swing2"></span>
+          <span class="swing3"></span>
+        </div>
+    {{/*// Please keep the section below and do not make modifications. */}}
+    <div class="nav-footer">
+        Proudly published with <a href="https://halo.run/" target="_blank" rel="noreferrer noopener">Halo</a><br>
+        {{/*Please keep the section below and do not make modifications. */}}
+        Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+        {{/*Please keep the section below and do not make modifications. */}}
+        &copy; {{now.UTC.Year}} <a href="{{.blog_url}}" title="{{.blog_title}}">{{.blog_title}}</a>
+        {{.options.blog_statistics_code}}
+        {{.options.blog_footer_info}}
+    </div>
+</div>
+{{- end -}}

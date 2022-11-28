@@ -1,0 +1,15 @@
+{{- define "SumiMakito_Journal/layout/_include/post_pagination" -}}
+<nav class="post-pagination">
+    {{if .prevPost}}
+    <a class="newer-posts" href="{{.prevPost.FullPath}}">
+        上一篇<br>{{.prevPost.Title}}
+    </a>
+    {{end}}
+    <span class="page-number"></span>
+    {{if .nextPost}}
+    <a class="older-posts" href="{{.nextPost.FullPath}}">
+        下一篇<br>{{.nextPost.Title}}
+    </a>
+    {{end}}
+</nav>
+{{- end -}}

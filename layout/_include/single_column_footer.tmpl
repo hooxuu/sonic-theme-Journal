@@ -1,0 +1,11 @@
+{{- define "SumiMakito_Journal/single_column_footer" -}}
+<div class="single-column-footer">
+    Proudly published with <a href="https://halo.run/" target="_blank" rel="noreferrer noopener">Halo</a><br>
+    {{/* <#-- Please keep the section below and do not make modifications. --> */}}
+    Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+    {{/* <#-- Please keep the section below and do not make modifications. --> */}}
+    &copy; {{now.UTC.Year}} <a href="{{.blog_url}}">{{.blog_title}}</a>
+    {{.options.blog_statistics_code}}
+    {{.options.blog_footer_info}}
+</div>
+{{- end -}}

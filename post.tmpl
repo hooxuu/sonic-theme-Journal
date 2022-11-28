@@ -1,0 +1,53 @@
+{{- define "SumiMakito_Journal/post" -}}
+{{template "SumiMakito_Journal/layout/_include/head.ftl" .}}
+{{template "SumiMakito_Journal/layout/_include/container_head" .}}
+{{template "SumiMakito_Journal/layout/_include/single_column_head" .}}
+{{template "SumiMakito_Journal/layout/_include/side_nav" .}}
+{{/* extraContainer没啥用，没他页面报错，有页面引用他 */}}
+<div ref="extraContainer" class="extra-container"></div>
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            <div {{if .post.Thumbnail}}class="post-head-wrapper" style="background-image: url('{{.post.Thumbnail}}')"{{else}}class="post-head-wrapper-text-only"{{end}}>
+                <div class="post-title">
+                    {{.post.Title}}
+                    <div class="post-meta">
+                        <time datetime="{{.post.CreateTime}}" itemprop="datePublished">
+                            {{unix_milli_time_format "2006-01-02" .post.CreateTime}}
+                        </time>&nbsp;
+                        {{if .post.Categories}}
+                            <i class="material-icons" style="">folder</i>
+                            {{range $category:=.post.Categories}}
+                                <a href="{{$category.FullPath}}"
+                                    title="{{$category.Name}}">{{$category.Name}}</a>
+                            {{end}}
+                        {{end}}
+                        {{if .tags}}
+                            <i class="material-icons" style="">label</i>
+                            {{range $tag:=.tags}}
+                                <a href="{{$tag.FullPath}}" title="{{$tag.Name}}">{{$tag.Name}}</a>
+                            {{end}}
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-body-wrapper">
+                <div class="post-body" v-pre>
+                    {{noescape .post.Content}}
+                </div>
+            </div>
+
+            {{template "SumiMakito_Journal/layout/_include/post_pagination" .}}
+            {{template "SumiMakito_Journal/layout/_include/comment_templates" .}}
+        </div>
+    </div>
+    {{template "SumiMakito_Journal/single_column_footer" .}}
+</div>
+
+{{template "SumiMakito_Journal/layout/_include/container_tail" .}}
+{{if (not .target.DisallowComment)}}
+    {{template "SumiMakito_Journal/layout/_include/comment_includes" .}}
+{{end}}
+{{template "SumiMakito_Journal/layout/_include/tail" .}}
+{{- end -}}

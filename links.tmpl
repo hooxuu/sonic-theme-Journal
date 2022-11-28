@@ -1,0 +1,35 @@
+{{- define "SumiMakito_Journal/links" -}}
+{{template "SumiMakito_Journal/layout/_include/head.ftl" .}}
+{{template "SumiMakito_Journal/layout/_include/container_head" .}}
+{{template "SumiMakito_Journal/layout/_include/single_column_head" .}}
+{{template "SumiMakito_Journal/layout/_include/side_nav" .}}
+{{/* extraContainer没啥用，没他页面报错，有页面引用他 */}}
+<div ref="extraContainer" class="extra-container"></div>
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            <div class="post-head-wrapper-text-only"
+                 style="background-image: url('')">
+                <div class="post-title">
+                    友情链接
+                </div>
+            </div>
+
+            <div class="post-body-wrapper">
+                <div class="post-body">
+                    <ul>
+                        {{$links:=listLinks}}
+                        {{range $link:=$links}}
+                            <li><a href="{{$link.URL}}" target="_blank" rel="noopener">{{$link.Name}}</a></li>
+                        {{end}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{template "SumiMakito_Journal/single_column_footer" .}}
+</div>
+
+{{template "SumiMakito_Journal/layout/_include/container_tail" .}}
+{{template "SumiMakito_Journal/layout/_include/tail" .}}
+{{- end -}}
