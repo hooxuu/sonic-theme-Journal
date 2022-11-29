@@ -6,13 +6,13 @@
 
 使用Go Template语法进行改写以适配[Sonic](https://github.com/go-sonic/sonic)，初学Go，如遇问题请见谅。
 
-**模板经过测试没有问题，但是Sonic后端分页模块返回的路径有些许小bug，需要微调后端进行适配，此问题不局限于本主题！**
+**模板常用功能经过测试应当是没有问题，但是Sonic后端分页模块返回的路径有些许小bug，需要微调后端进行适配，此问题不局限于本主题！**
 
 
 原主题地址：[https://github.com/SumiMakito/hexo-theme-journal](https://github.com/SumiMakito/hexo-theme-journal)
 
 ## 预览截图
-
+![indexpage.png](https://i.ibb.co/4Mgq6Lh/i-Shot-2022-11-29-10-06-10.png)
 ![screenshot.png](https://i.loli.net/2019/09/19/ILcRlGC5oVsEkeO.png)
 ![settings.png](https://i.loli.net/2019/09/19/aNO5yi4xMwjVJYH.png)
 
