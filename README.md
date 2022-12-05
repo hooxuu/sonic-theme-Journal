@@ -6,7 +6,7 @@
 
 使用Go Template语法进行改写以适配[Sonic](https://github.com/go-sonic/sonic)，初学Go，如遇问题请见谅。
 
-**模板常用功能经过测试应当是没有问题，但是Sonic后端分页模块返回的路径有些许小bug，需要微调后端进行适配，此问题不局限于本主题！**
+**模板常用功能经过测试应当是没有问题，如有瑕疵请见谅**
 
 
 原主题地址：[https://github.com/SumiMakito/hexo-theme-journal](https://github.com/SumiMakito/hexo-theme-journal)
