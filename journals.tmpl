@@ -3,8 +3,39 @@
 {{template "SumiMakito_Journal/layout/_include/container_head" .}}
 {{template "SumiMakito_Journal/layout/_include/single_column_head" .}}
 {{template "SumiMakito_Journal/layout/_include/side_nav" .}}
-{{/* extraContainer没啥用，没他页面报错，有页面引用他 */}}
-<div ref="extraContainer" class="extra-container"></div>
+<div ref="extraContainer" class="extra-container">
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+           :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        {{$pagination:=(journalsPagination .journals.PageNum .journals.Pages 3)}}
+        <div class="pagination index-page">
+            {{if $pagination.HasPrev}}
+                <a class="pagination-action" href="{{$pagination.PrevPageFullPath}}" style="opacity: 1;">
+                    <i class="material-icons pagination-action-icon">
+                        chevron_left
+                    </i>
+                </a>
+            {{end}}
+            <div class="pagination-indicator">
+                <span style="text-align: center">
+                    {{add .journals.PageNum 1}}<br><div
+                            style="display: inline-block; transform: rotate(-28deg)">-</div><br>{{ .journals.Pages}}
+                </span>
+            </div>
+            {{if $pagination.HasNext}}
+                <a href="{{$pagination.NextPageFullPath}}" class="pagination-action" style="opacity: 1;">
+                    <i class="material-icons pagination-action-icon">
+                        chevron_right
+                    </i>
+                </a>
+            {{end}}
+        </div>
+    </div>
+</div>
 <div ref="streamContainer" class="stream-container">
     <div class="post-list-container post-list-container-shadow">
         <div class="post">

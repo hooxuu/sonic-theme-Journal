@@ -3,8 +3,16 @@
 {{template "SumiMakito_Journal/layout/_include/container_head" .}}
 {{template "SumiMakito_Journal/layout/_include/single_column_head" .}}
 {{template "SumiMakito_Journal/layout/_include/side_nav" .}}
-{{/* extraContainer没啥用，没他页面报错，有页面引用他 */}}
-<div ref="extraContainer" class="extra-container"></div>
+<div ref="extraContainer" class="extra-container">
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+           :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+    </div>
+</div>
 <div ref="streamContainer" class="stream-container">
     <div class="post-list-container post-list-container-shadow">
         <div class="post">
