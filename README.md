@@ -8,11 +8,12 @@
 
 **模板常用功能经过测试应当是没有问题，如有瑕疵请见谅**
 
+⚠️ 目前的已知问题，代码高亮需要在 外观->主题设置->基本设置 将需要高亮的语言加入到《文章代码高亮语言》输入框并保存才能实现高亮，默认配置似乎失效，后续解决。
+
 
 原主题地址：[https://github.com/SumiMakito/hexo-theme-journal](https://github.com/SumiMakito/hexo-theme-journal)
 
 ## 预览截图
-![indexpage.png](https://i.ibb.co/4Mgq6Lh/i-Shot-2022-11-29-10-06-10.png)
 ![screenshot.png](https://i.loli.net/2019/09/19/ILcRlGC5oVsEkeO.png)
 ![settings.png](https://i.loli.net/2019/09/19/aNO5yi4xMwjVJYH.png)
 
