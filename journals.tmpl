@@ -48,20 +48,21 @@
 
             <div class="post-body-wrapper">
                 <div class="post-body">
+
+{{$len := len .journals.Content}}                
 <pre>
 [
 {{range $idx, $journal :=.journals.Content}}
-{{$len := len .journals.Content}}
-{
-    id: {{$journal.ID}},
-    createTime: "{{unix_milli_time_format  "2006-01-02 03:04" $journal.CreateTime}}",
-    content: "{{noescape $journal.Content}}"
-    {{if (lt (add $idx 1) $len)}}
-},
-{{else}}
-}
+    {
+        id: {{$journal.ID}},
+        createTime: "{{unix_milli_time_format  "2006-01-02 03:04" $journal.CreateTime}}",
+        content: "{{noescape $journal.Content}}"
+{{- if (lt (add $idx 1) $len)}}
+    },
+{{- else -}}
+    }
 {{end}}
-{{end}}
+{{- end -}}
 ]
 </pre>
                 </div>
